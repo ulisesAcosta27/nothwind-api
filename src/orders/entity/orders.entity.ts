@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { customer } from 'src/customer/entity/customer.entity';
+import { Employees } from 'src/employees/entity/employees.entity';
+import { OrderDetails } from 'src/order-details/entity/order-details.entity';
+import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Orders {
@@ -10,4 +13,10 @@ export class Orders {
   Description: string;
   @Column()
   Picture: string;
+  @ManyToOne(() => customer, (customer) => customer.Orders)
+  customer: customer[];
+  @ManyToOne(() => Employees, (employee) => employee.Orders)
+  employee: Employees[];
+  @OneToOne(()=> OrderDetails)
+
 }

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Orders } from 'src/orders/entity/orders.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Employees {
@@ -36,4 +37,6 @@ export class Employees {
   Notes: string;
   @Column()
   PhotoPath: string;
+  @OneToMany(() => Orders, (Order) => Order.employees)
+  Order: Orders[];
 }

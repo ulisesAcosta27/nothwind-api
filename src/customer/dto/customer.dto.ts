@@ -1,4 +1,4 @@
-export class customerDTO {
+export class CustomerDTO {
   readonly id?: number;
   readonly CompanyName: string;
   readonly ContactName: string;
